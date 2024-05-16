@@ -1,0 +1,56 @@
+{% extends "employee_register/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+    .form-group label {
+        color: #000;
+    }
+</style>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Add Employee
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.fullname|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.mobile|as_crispy_field }}
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form.emp_code|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form.position|as_crispy_field }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mt-3">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success btn-block">
+                                    <i class="fas fa-database"></i> Submit
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{% url 'employee_list' %}" class="btn btn-secondary btn-block">
+                                    <i class="fas fa-stream"></i> Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
